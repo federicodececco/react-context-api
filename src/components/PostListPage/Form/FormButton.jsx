@@ -1,4 +1,5 @@
 import { useSubmitProvider } from '../../../contexts/SubmitContext'
+import Iconcina from './Iconcina'
 export default function FormButton(formSubmit) {
   const { trigger, setTrigger } = useSubmitProvider()
   return (
@@ -7,9 +8,9 @@ export default function FormButton(formSubmit) {
         setTrigger(true)
       }}
       type='submit'
-      className='mx-1 border-1 px-4 text-slate-900 hover:border-2'
+      className='mx-auto px-4 text-slate-900'
     >
-      Aggiungi
+      <Iconcina />
     </button>
   )
 }
