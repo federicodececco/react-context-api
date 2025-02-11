@@ -1,10 +1,13 @@
-import { useState, useEffect, useTransition } from 'react'
+import { useState, useEffect, useTransition, createContext } from 'react'
+import axios from 'axios'
+import Form from '../components/Form'
 import TeamMembersGrid from '../components/PostListPage/TeamMembersGrid'
 import HeaderPost from '../components/PostListPage/HeaderPost'
-import axios from 'axios'
+import SubmitBanner from '../components/PostListPage/SubmitBanner'
+import { SubmitProvider } from '../contexts/SubmitContext'
 
-import Form from '../components/Form'
 export default function PostList() {
+  const UserContex = createContext()
   const startState = {
     name: '',
     id: '',
@@ -14,6 +17,8 @@ export default function PostList() {
     visible: true,
     img: '',
   }
+
+  let visible = 0
 
   const [user, setUser] = useState(startState)
   const [usersList, setUserList] = useState([])
@@ -81,20 +86,23 @@ export default function PostList() {
   useEffect(fetchUsers, [])
   return (
     <>
-      <div className='container mx-auto max-w-6xl px-4 py-12'>
-        <HeaderPost></HeaderPost>
-        <TeamMembersGrid
-          usersList={usersList}
-          remove={removeUser}
-          modify={modifyUser}
-        ></TeamMembersGrid>
+      <SubmitProvider>
+        <div className='relative container mx-auto max-w-6xl px-4 py-12 pb-20'>
+          <HeaderPost></HeaderPost>
+          <TeamMembersGrid
+            usersList={usersList}
+            remove={removeUser}
+            modify={modifyUser}
+          ></TeamMembersGrid>
 
-        <Form
-          user={user}
-          formField={handleFormField}
-          formSubmit={handleSubmit}
-        ></Form>
-      </div>
+          <Form
+            user={user}
+            formField={handleFormField}
+            formSubmit={handleSubmit}
+          ></Form>
+          <SubmitBanner />
+        </div>
+      </SubmitProvider>
     </>
   )
 }

@@ -21,7 +21,7 @@ export default function UserRow({ user, remove, modify, index }) {
               className='rounded-lg px-2 text-gray-200 hover:bg-yellow-500'
               onClick={modify}
             >
-              <i class='fa-solid fa-pen-to-square'></i>
+              <i className='fa-solid fa-pen-to-square'></i>
             </button>
           </span>
           <p className='mb-3 font-medium text-blue-600'>{user.role}</p>

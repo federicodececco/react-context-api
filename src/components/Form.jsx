@@ -1,4 +1,7 @@
+import { useSubmitProvider } from '../contexts/SubmitContext'
+
 export default function Form({ user, formField, formSubmit }) {
+  const { trigger, setTrigger } = useSubmitProvider()
   return (
     <>
       <form onSubmit={formSubmit}>
@@ -48,6 +51,9 @@ export default function Form({ user, formField, formSubmit }) {
           <option value='UI/UX'>UI/UX</option>
         </select>
         <button
+          onClick={() => {
+            setTrigger(true)
+          }}
           type='submit'
           className='mx-1 border-1 px-4 text-slate-900 hover:border-2'
         >
