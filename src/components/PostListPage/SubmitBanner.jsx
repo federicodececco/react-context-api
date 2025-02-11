@@ -9,7 +9,7 @@ export default function SubmitBanner() {
   } else
     setTimeout(() => {
       setTrigger(false)
-    }, 3000)
+    }, 3010)
   return (
     <>
       <div className='animate-fadeOut hover:animate-fadeOut fixed bottom-10 mx-auto max-w-5xl translate-x-50 rounded-lg bg-blue-600/75 py-4'>

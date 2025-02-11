@@ -1,6 +1,6 @@
 import { useState, useEffect, useTransition, createContext } from 'react'
 import axios from 'axios'
-import Form from '../components/Form'
+import Form from '../components/PostListPage/Form/Form'
 import TeamMembersGrid from '../components/PostListPage/TeamMembersGrid'
 import HeaderPost from '../components/PostListPage/HeaderPost'
 import SubmitBanner from '../components/PostListPage/SubmitBanner'
@@ -17,8 +17,6 @@ export default function PostList() {
     visible: true,
     img: '',
   }
-
-  let visible = 0
 
   const [user, setUser] = useState(startState)
   const [usersList, setUserList] = useState([])
@@ -83,7 +81,13 @@ export default function PostList() {
       .then(() => fetchUsers())
       .then(() => setUser(startState))
   }
+
   useEffect(fetchUsers, [])
+
+  const theVar = 'mar'
+  const filterd = usersList.filter(elem => {
+    return elem.author.toLowerCase().includes(theVar.toLowerCase())
+  })
   return (
     <>
       <SubmitProvider>
@@ -93,13 +97,11 @@ export default function PostList() {
             usersList={usersList}
             remove={removeUser}
             modify={modifyUser}
-          ></TeamMembersGrid>
-
-          <Form
             user={user}
             formField={handleFormField}
             formSubmit={handleSubmit}
-          ></Form>
+          ></TeamMembersGrid>
+
           <SubmitBanner />
         </div>
       </SubmitProvider>

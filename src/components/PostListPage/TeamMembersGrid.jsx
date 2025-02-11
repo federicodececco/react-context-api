@@ -1,5 +1,13 @@
 import UserRow from './UserRow'
-export default function TeamMembersGrid({ remove, modify, usersList }) {
+import Form from './Form/Form'
+export default function TeamMembersGrid({
+  remove,
+  modify,
+  usersList,
+  formField,
+  formSubmit,
+  user,
+}) {
   return (
     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
       {usersList.map((elem, index) => {
@@ -13,6 +21,7 @@ export default function TeamMembersGrid({ remove, modify, usersList }) {
           />
         )
       })}
+      <Form user={user} formField={formField} formSubmit={formSubmit}></Form>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import AboutUs from './pages/AboutUs'
 import PostList from './pages/PostList'
 import Staff from './pages/Staff'
+
 function App() {
   return (
     <BrowserRouter>
